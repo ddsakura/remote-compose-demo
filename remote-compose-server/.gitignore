@@ -1,0 +1,5 @@
+# Node.js
+node_modules/
+
+# Generated .rc files（由 ./gradlew :rc-generator:publishRc 產生）
+static/*.rc

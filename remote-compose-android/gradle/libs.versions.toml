@@ -1,0 +1,15 @@
+[versions]
+agp = "9.1.0"
+kotlin = "2.3.10"
+compileSdk = "35"
+minSdk = "29"
+targetSdk = "35"
+
+[libraries]
+# (空的，build.gradle.kts 直接用 string 寫 dependency，不走 version catalog)
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
