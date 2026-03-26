@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.example.uiremote"
-    compileSdk = 35
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 29
+        minSdk = libs.versions.minSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -18,19 +18,19 @@ android {
 }
 
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:2025.12.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.foundation:foundation")
-    implementation("androidx.compose.material3:material3")
-    debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.material3)
+    debugImplementation(libs.androidx.compose.ui.tooling)
 
     // Remote Compose Creation
-    implementation("androidx.compose.remote:remote-core:1.0.0-alpha07")
-    implementation("androidx.compose.remote:remote-creation:1.0.0-alpha07")
-    implementation("androidx.compose.remote:remote-creation-core:1.0.0-alpha07")
-    implementation("androidx.compose.remote:remote-creation-compose:1.0.0-alpha07")
+    implementation(libs.androidx.compose.remote.core)
+    implementation(libs.androidx.compose.remote.creation)
+    implementation(libs.androidx.compose.remote.creation.core)
+    implementation(libs.androidx.compose.remote.creation.compose)
 
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.runner)
 }
