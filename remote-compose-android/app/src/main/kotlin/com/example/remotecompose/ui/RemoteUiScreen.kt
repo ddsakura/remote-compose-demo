@@ -26,7 +26,10 @@ fun RemoteUiScreen(
     val currentVersion by viewModel.currentVersion.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .windowInsetsPadding(WindowInsets.statusBars)
+    ) {
 
         // 頂部控制列：切換 v1 / v2，模擬 server 不同版本
         VersionSwitchBar(
