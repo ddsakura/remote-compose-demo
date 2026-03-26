@@ -8,10 +8,10 @@ application {
 }
 
 dependencies {
-    implementation("androidx.compose.remote:remote-core:1.0.0-alpha07")
-    implementation("androidx.compose.remote:remote-creation:1.0.0-alpha07")
-    implementation("androidx.compose.remote:remote-creation-core:1.0.0-alpha07")
-    implementation("androidx.annotation:annotation:1.9.1")
+    implementation(libs.androidx.compose.remote.core)
+    implementation(libs.androidx.compose.remote.creation)
+    implementation(libs.androidx.compose.remote.creation.core)
+    implementation(libs.androidx.annotation)
 }
 
 kotlin {
