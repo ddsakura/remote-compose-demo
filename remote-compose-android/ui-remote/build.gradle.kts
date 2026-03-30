@@ -1,5 +1,4 @@
 import java.io.File
-import java.io.ByteArrayOutputStream
 
 plugins {
     alias(libs.plugins.android.library)
@@ -16,8 +15,11 @@ fun adbExecutable(project: Project): String {
             ?: System.getenv("ANDROID_HOME")
 
     if (!sdkRoot.isNullOrBlank()) {
-        val platformTools = File(sdkRoot, "platform-tools/adb")
-        if (platformTools.exists()) return platformTools.absolutePath
+        val platformToolsDir = File(sdkRoot, "platform-tools")
+        val adbUnix = File(platformToolsDir, "adb")
+        if (adbUnix.exists()) return adbUnix.absolutePath
+        val adbWindows = File(platformToolsDir, "adb.exe")
+        if (adbWindows.exists()) return adbWindows.absolutePath
     }
 
     return "adb"
@@ -98,7 +100,7 @@ capturedRcFiles.forEach { fileName ->
 
     tasks.register(taskName) {
         group = "remote-compose"
-        description = "Pull $fileName from the instrumentation external files dir into remote-compose-server/static/."
+        description = "Pull $fileName from /sdcard/Download/remote-compose on the device into remote-compose-server/static/."
         dependsOn("captureRc")
         doLast {
             publishedRcDir.mkdirs()
